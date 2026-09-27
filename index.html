@@ -68,15 +68,56 @@
                 </div>
             </div>
             <div class="flex items-center space-x-2 space-x-reverse">
-                <!-- زر تفعيل الإشعارات -->
-                <button onclick="requestNotificationPermission()" id="btn-enable-notify" class="bg-yellow-400 text-purple-900 p-2 rounded-full flex items-center justify-center shadow-md hover:bg-yellow-300 transition text-xs font-bold px-2.5">
-                    <i class="fa-solid fa-bell animate-bounce ml-1"></i>
-                    <span id="notify-status-text">تفعيل التنبيهات</span>
-                </button>
-                <button onclick="toggleAiModal()" class="bg-white/20 hover:bg-white/30 text-white p-2 rounded-full flex items-center space-x-1 space-x-reverse px-2.5 border border-white/30 text-xs transition">
-                    <i class="fa-solid fa-robot text-yellow-300"></i>
-                </button>
-            </div>
+<!-- زر تفعيل الإشعارات -->
+<button onclick="requestNotificationPermission()" id="btn-enable-notify" class="bg-yellow-400 text-purple-900 p-2 rounded-full flex items-center justify-center shadow-md hover:bg-yellow-300 transition text-xs font-bold px-2.5">
+  <i class="fa-solid fa-bell animate-bounce ml-1"></i>
+  <span id="notify-status-text">تفعيل التنبيهات</span>
+</button>
+
+<button onclick="toggleAiModal()" class="bg-white/20 hover:bg-white/30 text-white p-2 rounded-full flex items-center space-x-1 space-x-reverse px-2.5 border border-white/30 text-xs transition">
+  <i class="fa-solid fa-robot text-yellow-300"></i>
+</button>
+
+<!-- كود البرمجة والاهتزاز للإشعارات -->
+<script>
+  function requestNotificationPermission() {
+    const statusText = document.getElementById("notify-status-text");
+
+    // 1. تفعيل الاهتزاز عند ضغط الزر لتأكيد التفاعل
+    if ('vibrate' in navigator) {
+      navigator.vibrate([100, 50, 100]);
+    }
+
+    // 2. التحقق مما إذا كان المستخدم داخل تطبيق الأندرويد (WebView)
+    const isWebView = /wv|Android.*Version\/[0-9]\.[0-9]/i.test(navigator.userAgent) || window.Android;
+
+    if (isWebView) {
+      // تغيير النص فوراً وبصمت بدون ظهور أي نافذة Alert
+      if (statusText) {
+        statusText.innerText = "التنبيهات مفعلة";
+      }
+      return;
+    }
+
+    // 3. التحقق للمتصفحات العادية (Chrome, Safari, Firefox...)
+    if (!('Notification' in window)) {
+      alert("متصفحك الحالي لا يدعم الإشعارات المباشرة.");
+      return;
+    }
+
+    // طلب الإذن للمتصفح العادي
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        if (statusText) {
+          statusText.innerText = "التنبيهات مفعلة";
+        }
+        if ('vibrate' in navigator) {
+          navigator.vibrate([200, 100, 200]);
+        }
+      }
+    });
+  }
+</script>
         </header>
 
         <!-- المحتوى المتغير للواجهات -->
