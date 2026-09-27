@@ -29,6 +29,57 @@
                 }
             }
         }
+        // دالة إشعار عائم ذكي بدلاً من الـ showAppNotification التقليدي
+function showAppNotification(messageText) {
+  // 1. التحقق إذا كان هناك إشعار قديم يتم إزالته أولاً
+  const existingToast = document.getElementById('custom-app-toast');
+  if (existingToast) {
+    existingToast.remove();
+  }
+
+  // 2. إنشاء عنصر جديد للإشعار العائم
+  const toast = document.createElement('div');
+  toast.id = 'custom-app-toast';
+  toast.innerHTML = `
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+      <i class="fa-solid fa-bell text-yellow-300" style="font-size: 18px;"></i>
+      <span style="flex-grow: 1; text-align: right;">${messageText}</span>
+    </div>
+  `;
+  
+  // 3. تنسيق شكل الإشعار ليكون أنيقاً ومنتصف الشاشة أو أعلاها
+  toast.style.position = 'fixed';
+  toast.style.top = '20px';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.backgroundColor = '#4c1d95'; // لون بنفسجي متناسق مع تطبيقك
+  toast.style.color = '#ffffff';
+  toast.style.padding = '12px 20px';
+  toast.style.borderRadius = '12px';
+  toast.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
+  toast.style.zIndex = '999999';
+  toast.style.fontSize = '14px';
+  toast.style.fontWeight = 'bold';
+  toast.style.maxWidth = '90%';
+  toast.style.width = '320px';
+  toast.style.direction = 'rtl';
+  toast.style.transition = 'all 0.3s ease-in-out';
+
+  // إضافته إلى صفحة التطبيق
+  document.body.appendChild(toast);
+
+  // 4. اهتزاز الهاتف خفيفاً عند ظهور التنبيه (إذا كان مدعوماً)
+  if ('vibrate' in navigator) {
+    navigator.vibrate([150, 100, 150]);
+  }
+
+  // 5. إخفاء الإشعار تلقائياً بعد 3 ثواني
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.top = '0px';
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
     </script>
     <style>
         body { font-family: 'Cairo', sans-serif; background-color: #F9F8FF; -webkit-tap-highlight-color: transparent; }
@@ -92,7 +143,7 @@
     const isWebView = /wv|Android.*Version\/[0-9]\.[0-9]/i.test(navigator.userAgent) || window.Android;
 
     if (isWebView) {
-      // تغيير النص فوراً وبصمت بدون ظهور أي نافذة Alert
+      // تغيير النص فوراً وبصمت بدون ظهور أي نافذة showAppNotification
       if (statusText) {
         statusText.innerText = "التنبيهات مفعلة";
       }
@@ -101,7 +152,7 @@
 
     // 3. التحقق للمتصفحات العادية (Chrome, Safari, Firefox...)
     if (!('Notification' in window)) {
-      alert("متصفحك الحالي لا يدعم الإشعارات المباشرة.");
+      showAppNotification("متصفحك الحالي لا يدعم الإشعارات المباشرة.");
       return;
     }
 
@@ -136,7 +187,7 @@
                         <input type="text" id="study-query" placeholder="مثال: العناصر، الكسور العشرية، قانون نيوتن..." class="w-full p-2.5 text-sm rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-app-purple">
                         <label for="study-img" class="bg-purple-200 text-purple-800 p-2.5 rounded-xl cursor-pointer hover:bg-purple-300 flex items-center justify-center">
                             <i class="fa-solid fa-camera"></i>
-                            <input type="file" id="study-img" accept="image/*" class="hidden" onchange="alert('تم إرفاق صورة الدرس بنجاح!')">
+                            <input type="file" id="study-img" accept="image/*" class="hidden" onchange="showAppNotification('تم إرفاق صورة الدرس بنجاح!')">
                         </label>
                     </div>
                     <div class="grid grid-cols-3 gap-2 pt-1">
@@ -168,7 +219,7 @@
                     <div class="flex justify-between items-center">
                         <label for="hw-img" class="bg-rose-200 text-rose-800 px-3 py-2 rounded-xl text-xs font-bold cursor-pointer hover:bg-rose-300">
                             <i class="fa-solid fa-image ml-1"></i>رفع صورة السؤال
-                            <input type="file" id="hw-img" accept="image/*" class="hidden" onchange="alert('تم إرفاق صورة السؤال!')">
+                            <input type="file" id="hw-img" accept="image/*" class="hidden" onchange="showAppNotification('تم إرفاق صورة السؤال!')">
                         </label>
                         <button onclick="solveHomework()" class="bg-app-pink text-white px-5 py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90">إرسال و حل</button>
                     </div>
@@ -438,7 +489,7 @@
                     vibrate: [200, 100, 200]
                 });
             } else {
-                alert(`🔔 ${title}\n\n${bodyText}`);
+                showAppNotification(`🔔 ${title}\n\n${bodyText}`);
             }
         }
 
@@ -526,7 +577,7 @@
         // --- 1. مساعد الدراسة ---
         async function fetchStudyContent(type) {
             const query = document.getElementById('study-query').value.trim();
-            if(!query) { alert('الرجاء كتابة عنوان الدرس أولاً'); return; }
+            if(!query) { showAppNotification('الرجاء كتابة عنوان الدرس أولاً'); return; }
             
             const resDiv = document.getElementById('study-result');
             const resType = document.getElementById('study-result-type');
@@ -558,7 +609,7 @@
         // --- 2. حل الواجب ---
         async function solveHomework() {
             const query = document.getElementById('hw-query').value.trim();
-            if(!query) { alert('يرجى كتابة السؤال أو المسألة أولاً'); return; }
+            if(!query) { showAppNotification('يرجى كتابة السؤال أو المسألة أولاً'); return; }
 
             document.getElementById('hw-result').classList.add('hidden');
             document.getElementById('hw-loading').classList.remove('hidden');
@@ -630,7 +681,7 @@
             const type = document.getElementById('new-task-type').value;
             const date = document.getElementById('new-task-date').value;
 
-            if(!title || !date) { alert('الرجاء إكمال كافة الحقول'); return; }
+            if(!title || !date) { showAppNotification('الرجاء إكمال كافة الحقول'); return; }
 
             tasks.push({ title, type, date, done: false });
             localStorage.setItem('musaidati_tasks', JSON.stringify(tasks));
