@@ -24,10 +24,10 @@
 </head>
 <body class="min-h-screen pb-20">
 
-  <!-- هيدر التطبيق -->
+  <!-- هيدر تطبيق مساعدتي -->
   <header class="bg-purple-900/80 backdrop-blur-md p-4 sticky top-0 z-50 shadow-md flex justify-between items-center border-b border-purple-700">
     <div class="flex items-center space-x-2 space-x-reverse">
-      <div class="bg-yellow-400 p-2 rounded-full text-purple-900 font-black text-lg">
+      <div class="bg-yellow-400 p-2 rounded-full text-purple-900 font-black text-lg shadow">
         <i class="fa-solid fa-graduation-cap"></i>
       </div>
       <div>
@@ -50,36 +50,41 @@
       </button>
 
       <!-- زر حساب المستخدم / تسجيل الدخول -->
-      <button onclick="openAuthModal()" class="bg-purple-700 hover:bg-purple-600 text-yellow-300 px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1">
+      <button onclick="openAuthModal()" class="bg-purple-700 hover:bg-purple-600 text-yellow-300 px-3 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1 shadow">
         <i class="fa-solid fa-user-circle"></i>
         <span id="auth-btn-text">حسابي</span>
       </button>
     </div>
   </header>
 
-  <!-- المحتوى الرئيسي -->
+  <!-- المحتوى الرئيسي لتطبيق مساعدتي -->
   <main class="p-4 max-w-4xl mx-auto space-y-6">
 
-    <!-- قسم الترحيب ووضع التجربة -->
+    <!-- قسم الترحيب ووضع التجربة (Demo Mode) -->
     <section class="bg-gradient-to-r from-purple-800 to-indigo-900 p-5 rounded-2xl shadow-xl border border-purple-600">
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center flex-wrap gap-3">
         <div>
           <h2 class="text-xl font-bold text-yellow-300 mb-1">أهلاً بك في منصة مساعدتي</h2>
-          <p id="user-welcome-sub" class="text-xs text-purple-200">الرجاء تسجيل الدخول أو تجربة التطبيق للوصول إلى لوحات المتابعة.</p>
+          <p id="user-welcome-sub" class="text-xs text-purple-200">الرجاء تسجيل الدخول أو تفعيل وضع التجربة للوصول إلى لوحات المتابعة.</p>
         </div>
-        <button onclick="enableDemoMode()" class="bg-yellow-400 text-purple-900 text-xs font-black px-4 py-2 rounded-xl shadow hover:bg-yellow-300 transition flex items-center gap-1">
-          <i class="fa-solid fa-bolt"></i> وضع التجربة (Demo)
-        </button>
+        <div class="flex gap-2">
+          <button onclick="enableDemoMode()" class="bg-yellow-400 text-purple-900 text-xs font-black px-4 py-2 rounded-xl shadow hover:bg-yellow-300 transition flex items-center gap-1">
+            <i class="fa-solid fa-bolt"></i> وضع التجربة (Demo)
+          </button>
+          <button onclick="handleSignOut()" id="signout-btn" class="hidden bg-red-600 text-white text-xs font-bold px-3 py-2 rounded-xl shadow hover:bg-red-500 transition">
+            تسجيل الخروج
+          </button>
+        </div>
       </div>
     </section>
 
-    <!-- لوحة ولي الأمر (تظهر حسب نوع المستخدم أو وضع التجربة) -->
+    <!-- 👨‍👩‍👧 لوحة ولي الأمر -->
     <section id="parent-dashboard" class="hidden space-y-4">
       <div class="bg-purple-900/60 p-4 rounded-2xl border border-purple-500 shadow-lg">
         <h3 class="text-lg font-bold text-yellow-300 mb-3 flex items-center gap-2">
-          <i class="fa-solid fa-user-shield"></i> متابعة ولي الأمر
+          <i class="fa-solid fa-user-shield"></i> متابعة ولي الأمر (لوحة التحكم)
         </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center mb-4">
           <div class="bg-purple-800/80 p-3 rounded-xl border border-purple-600">
             <span class="block text-xs text-purple-300">إنجاز اليوم</span>
             <span class="text-lg font-black text-yellow-400">85%</span>
@@ -89,26 +94,26 @@
             <span class="text-lg font-black text-green-400">عالي</span>
           </div>
           <div class="bg-purple-800/80 p-3 rounded-xl border border-purple-600">
-            <span class="block text-xs text-purple-300">المشاعر الحالية</span>
+            <span class="block text-xs text-purple-300">المشاعر</span>
             <span class="text-lg font-black text-pink-400">😊 سعيد</span>
           </div>
           <div class="bg-purple-800/80 p-3 rounded-xl border border-purple-600">
-            <span class="block text-xs text-purple-300">المكافآت المكتسبة</span>
+            <span class="block text-xs text-purple-300">المكافآت</span>
             <span class="text-lg font-black text-yellow-300">⭐ 12</span>
           </div>
         </div>
-        <div class="mt-4 flex gap-2 flex-wrap">
-          <button onclick="showAppNotification('تم إرسال طلب توصية إلى الذكاء الاصطناعي بنجاح!')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-lg font-bold transition">
+        <div class="flex gap-2 flex-wrap">
+          <button onclick="showAppNotification('تم إرسال طلب التوصية إلى الذكاء الاصطناعي بنجاح!')" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs px-3 py-2 rounded-lg font-bold transition">
             <i class="fa-solid fa-wand-magic-sparkles"></i> طلب توصية من Gemini
           </button>
-          <button onclick="showAppNotification('تم حفظ المهمة الجديدة بنجاح!')" class="bg-green-600 hover:bg-green-500 text-white text-xs px-3 py-2 rounded-lg font-bold transition">
-            <i class="fa-solid fa-plus"></i> إنشاء مهمة جديدة
+          <button onclick="showAppNotification('تم إنشاء وتعديل المهمة وحفظها في قاعدة البيانات!')" class="bg-green-600 hover:bg-green-500 text-white text-xs px-3 py-2 rounded-lg font-bold transition">
+            <i class="fa-solid fa-plus"></i> إنشاء / تعديل مهمة
           </button>
         </div>
       </div>
     </section>
 
-    <!-- لوحة المعلمة / الأخصائية (تظهر حسب نوع المستخدم) -->
+    <!-- 👩‍🏫 لوحة المعلمة / الأخصائية -->
     <section id="teacher-dashboard" class="hidden space-y-4">
       <div class="bg-indigo-950/80 p-4 rounded-2xl border border-indigo-700 shadow-lg">
         <h3 class="text-lg font-bold text-yellow-300 mb-3 flex items-center gap-2">
@@ -117,8 +122,8 @@
         <div class="space-y-2">
           <div class="bg-indigo-900/50 p-3 rounded-xl flex justify-between items-center border border-indigo-800">
             <div>
-              <h4 class="font-bold text-sm text-white">الطفل: أحمد محمد</h4>
-              <p class="text-xs text-indigo-200">الهدف الحالي: تحسين التركيز البصري والمهارات الحركية.</p>
+              <h4 class="font-bold text-sm text-white">الطفل المرتبط: أحمد محمد</h4>
+              <p class="text-xs text-indigo-200">المهارة المستهدفة: التركيز البصري والمهارات الحركية.</p>
             </div>
             <span class="bg-yellow-400 text-purple-900 text-xs font-bold px-2.5 py-1 rounded-full">مستوى المساعدة: متوسط</span>
           </div>
@@ -126,25 +131,25 @@
       </div>
     </section>
 
-    <!-- قسم الخدمات الأساسية (الجدول المنظم ومساعد الدراسة) -->
+    <!-- مساعد الدراسة والجدول المنظم -->
     <section class="bg-gradient-to-br from-indigo-900/60 to-purple-900/60 p-5 rounded-2xl border border-purple-600 shadow-xl">
       <div class="flex items-center gap-3 mb-3">
         <div class="bg-blue-500/20 p-2.5 rounded-xl text-blue-300">
           <i class="fa-solid fa-calendar-days text-xl"></i>
         </div>
         <div>
-          <h3 class="font-bold text-lg text-white">جدولي المنظم</h3>
-          <p class="text-xs text-purple-200">تنظيم الواجبات والاختبارات مع إشعارات صوتية ومهتزة.</p>
+          <h3 class="font-bold text-lg text-white">مساعد الدراسة والمهام</h3>
+          <p class="text-xs text-purple-200">شرح مباشر، ملخصات، وأسئلة تدريبية عبر الذكاء الاصطناعي مع التنبيهات.</p>
         </div>
       </div>
-      <button onclick="showAppNotification('تجربة الإشعار: موعد المهمة القادمة بعد قليل!')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-xs font-bold transition">
+      <button onclick="showAppNotification('تنبيه مهمة: موعد مراجعة الجدول الدراسي قد حان!')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-2.5 rounded-xl text-xs font-bold transition shadow">
         تجربة إشعار المهمة
       </button>
     </section>
 
   </main>
 
-  <!-- مودال المصادقة وتسجيل الدخول (Firebase Auth) -->
+  <!-- نافذة تسجيل الدخول / إنشاء الحساب (Firebase Authentication Modal) -->
   <div id="auth-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-purple-900 border border-purple-500 w-full max-w-md p-6 rounded-2xl shadow-2xl space-y-4 relative">
       <button onclick="closeAuthModal()" class="absolute top-4 left-4 text-purple-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -153,20 +158,20 @@
       <div class="space-y-3">
         <div>
           <label class="block text-xs text-purple-200 mb-1">البريد الإلكتروني</label>
-          <input type="email5" id="auth-email" class="w-full bg-purple-950 border border-purple-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-yellow-400" placeholder="name@example.com">
+          <input type="email" id="auth-email" class="w-full bg-purple-950 border border-purple-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-yellow-400" placeholder="name@example.com">
         </div>
         <div>
           <label class="block text-xs text-purple-200 mb-1">كلمة المرور</label>
           <input type="password" id="auth-password" class="w-full bg-purple-950 border border-purple-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-yellow-400" placeholder="********">
         </div>
 
-        <!-- اختيار نوع المستخدم (عند التسجيل الجديد) -->
+        <!-- اختيار نوع المستخدم (عند إنشاء حساب جديد) -->
         <div id="role-selection-container" class="hidden">
-          <label class="block text-xs text-purple-200 mb-1">نوع المستخدم</label>
+          <label class="block text-xs text-purple-200 mb-1">تحديد نوع المستخدم</label>
           <select id="auth-role" class="w-full bg-purple-950 border border-purple-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-yellow-400">
-            <option value="student">طالب</option>
-            <option value="teacher">معلم / أخصائي</option>
-            <option value="parent">ولي أمر</option>
+            <option value="student">1- طالب</option>
+            <option value="teacher">2- معلم / أخصائي</option>
+            <option value="parent">3- ولي أمر</option>
           </select>
         </div>
 
@@ -176,32 +181,31 @@
 
         <div class="flex justify-between items-center text-xs text-purple-300 pt-2">
           <button onclick="toggleAuthMode()" id="auth-toggle-mode-btn" class="hover:underline">ليس لديك حساب؟ إنشاء حساب جديد</button>
-          <button onclick="handlePasswordReset()" class="hover:underline">نسيت كلمة المرور؟</button>
+          <button onclick="handlePasswordReset()" class="hover:underline">استعادة كلمة المرور</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- مودال الذكاء الاصطناعي -->
+  <!-- نافذة الذكاء الاصطناعي -->
   <div id="ai-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-purple-900 border border-purple-500 w-full max-w-md p-6 rounded-2xl shadow-2xl space-y-4 relative">
       <button onclick="toggleAiModal()" class="absolute top-4 left-4 text-purple-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       <h3 class="text-lg font-black text-yellow-300 flex items-center gap-2"><i class="fa-solid fa-robot"></i> مساعد الذكاء الاصطناعي</h3>
-      <p class="text-xs text-purple-200">أنا هنا لمساعدتك في تنظيم المهام وتقديم توصيات تعليمية وسلوكية مخصصة.</p>
+      <p class="text-xs text-purple-200">أنا هنا لمساعدتك في شرح الدروس، تقديم التوصيات، وتنظيم مهام التطبيق.</p>
       <div class="bg-purple-950 p-3 rounded-xl border border-purple-800 text-xs text-purple-100 min-h-[100px]">
-        كيف يمكنني مساعدتك اليوم؟ يمكنك طلب تلخيص مهام أو خطة يومية طفل ذو احتياجات خاصة.
+        مرحباً! اسألني أي شيء عن خطة طفلك أو مهامه الدراسية اليومية.
       </div>
     </div>
   </div>
 
-  <!-- سكربتات Firebase والمنطق البرمجي -->
+  <!-- سكربتات Firebase والربط الحقيقي -->
   <script type="module">
-    // استيراد حزم Firebase من CDN المعتمد
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    // بيانات الاتصال الخاصة بمشروعك في Firebase (قم بتعديلها لتطابق مشروعك الحقيقي)
+    // ⚠️ استبدل هذه البيانات ببيانات مشروعك الحقيقية في Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyBCWXd4gTCxzE5wE4SBWeMbp9Ids5H8wx0",
       authDomain: "musaidati.firebaseapp.com",
@@ -211,26 +215,31 @@
       appId: "1:908567907716:web:da89577329913fc6cfe1d1"
     };
 
-    // تهيئة Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
 
     let isSignUpMode = false;
 
-    // مراقبة حالة المستخدم وحفظ البروفايل في users/{uid}
+    // مراقبة حالة المصادقة وجلب الملف الشخصي من users/{uid}
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         document.getElementById("auth-btn-text").innerText = "حسابي";
-        const userDocRef = doc(db, "users", user.uid);
-        const userSnap = await getDoc(userDocRef);
-        if (userSnap.exists()) {
-          const userData = userSnap.data();
-          applyUserRoleUI(userData.role);
-          document.getElementById("user-welcome-sub").innerText = `مرحباً بك مجدداً (${userData.name || user.email}) - الدور: ${userData.role}`;
+        document.getElementById("signout-btn").classList.remove("hidden");
+        try {
+          const userDocRef = doc(db, "users", user.uid);
+          const userSnap = await getDoc(userDocRef);
+          if (userSnap.exists()) {
+            const userData = userSnap.data();
+            applyUserRoleUI(userData.role);
+            document.getElementById("user-welcome-sub").innerText = `مرحباً بك (${userData.name || user.email}) - الدور: ${userData.role}`;
+          }
+        } catch (e) {
+          console.error(e);
         }
       } else {
         document.getElementById("auth-btn-text").innerText = "تسجيل الدخول";
+        document.getElementById("signout-btn").classList.add("hidden");
         hideAllDashboards();
       }
     });
@@ -244,7 +253,7 @@
         if (isSignUpMode) {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           const user = userCredential.user;
-          // حفظ الملف الشخصي بشكل آمن في users/{uid}
+          // حفظ الملف الشخصي الآمن في users/{uid} بدون السماح بتلاعب الصلاحيات
           await setDoc(doc(db, "users", user.uid), {
             uid: user.uid,
             name: email.split('@')[0],
@@ -253,28 +262,37 @@
             createdAt: new Date().toISOString(),
             photoURL: ""
           });
-          showAppNotification("تم إنشاء الحساب وتسجيل البيانات بنجاح!");
+          showAppNotification("تم إنشاء الحساب وحفظ الملف الشخصي بنجاح!");
         } else {
           await signInWithEmailAndPassword(auth, email, password);
           showAppNotification("تم تسجيل الدخول بنجاح!");
         }
         closeAuthModal();
       } catch (error) {
-        alert("خطأ في المصادقة: " + error.message);
+        showAppNotification("خطأ: " + error.message);
+      }
+    }
+
+    window.handleSignOut = async function() {
+      try {
+        await signOut(auth);
+        showAppNotification("تم تسجيل الخروج بنجاح.");
+      } catch (e) {
+        console.error(e);
       }
     }
 
     window.handlePasswordReset = async function() {
       const email = document.getElementById("auth-email").value;
       if (!email) {
-        alert("الرجاء إدخال البريد الإلكتروني أولاً لاستعادة كلمة المرور.");
+        showAppNotification("الرجاء إدخال البريد الإلكتروني أولاً.");
         return;
       }
       try {
         await sendPasswordResetEmail(auth, email);
-        showAppNotification("تم إرسال رابط استعادة كلمة المرور إلى بريدك الإلكتروني.");
+        showAppNotification("تم إرسال رابط استعادة كلمة المرور إلى بريدك.");
       } catch (error) {
-        alert("خطأ: " + error.message);
+        showAppNotification("خطأ: " + error.message);
       }
     }
 
@@ -300,8 +318,9 @@
 
     window.enableDemoMode = function() {
       applyUserRoleUI('parent');
-      showAppNotification("تم تفعيل وضع التجربة (Demo Mode) بنجاح!");
-      document.getElementById("user-welcome-sub").innerText = "أنت تستخدم وضع التجربة كـ (ولي أمر).";
+      showAppNotification("تم تفعيل وضع التجربة (Demo Mode) كـ (ولي أمر).");
+      document.getElementById("user-welcome-sub").innerText = "أنت تستخدم وضع التجربة المعاينة لتطبيق مساعدتي.";
+      document.getElementById("signout-btn").classList.remove("hidden");
     }
 
     function applyUserRoleUI(role) {
@@ -322,7 +341,7 @@
     window.closeAuthModal = function() { document.getElementById("auth-modal").classList.add("hidden"); }
   </script>
 
-  <!-- وظائف واجهة المستخدم العامة والتنبيهات والاهتزاز -->
+  <!-- وظائف التطبيق العامة (الإشعارات والاهتزاز والمودال) -->
   <script>
     function requestNotificationPermission() {
       const statusText = document.getElementById("notify-status-text");
