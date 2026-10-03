@@ -1,0 +1,15 @@
+{
+  "name": "تطبيق رِفْقَتي الداعم",
+  "short_name": "رفقتي",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F9F8FF",
+  "theme_color": "#8A70D6",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
