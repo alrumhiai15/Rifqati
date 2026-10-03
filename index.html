@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>تطبيق مساعدتي - Musaidati</title>
+    <title>تطبيق رفقتي - Rifqati</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
@@ -85,14 +85,14 @@
     <div id="splash-screen" class="fixed inset-0 bg-gradient-to-br from-app-purple via-purple-400 to-app-pink z-50 flex flex-col items-center justify-center text-white transition-opacity duration-700">
         <div class="text-center p-6 animate-bounce">
             <div class="w-24 h-24 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-white/40 shadow-lg">
-                <i class="fa-solid fa-graduation-cap text-5xl text-white"></i>
+                <i class="fa-solid fa-hand-holding-heart text-5xl text-white"></i>
             </div>
-            <h1 class="text-4xl font-extrabold mb-2 tracking-wide">مُساعِدَتي</h1>
-            <p class="text-lg opacity-90 font-medium">لأن كل طالبة تستحق من يساعدها على النجاح</p>
+            <h1 class="text-4xl font-extrabold mb-2 tracking-wide">رِفْقَتي</h1>
+            <p class="text-lg opacity-90 font-medium">رفيقك الداعم لكل خطوة نحو السعادة والتميز</p>
         </div>
         <div class="absolute bottom-10 flex items-center space-x-2 space-x-reverse text-sm opacity-75">
             <i class="fa-solid fa-circle-notch animate-spin"></i>
-            <span>جاري تجهيز بيئة التعلم الذكية والمتابعة...</span>
+            <span>جاري تجهيز بيئة الدعم والأنشطة الممتعة...</span>
         </div>
     </div>
 
@@ -103,11 +103,11 @@
         <header class="bg-gradient-to-r from-app-purple to-purple-600 text-white p-4 shadow-md flex items-center justify-between sticky top-0 z-30">
             <div class="flex items-center space-x-3 space-x-reverse">
                 <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center border border-white/30">
-                    <i class="fa-solid fa-user-graduate text-xl"></i>
+                    <i class="fa-solid fa-hand-holding-heart text-xl text-white"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg leading-tight">مساعدتي</h1>
-                    <p class="text-xs text-purple-200">معاً .. نحو مستقبل أكثر إشراقاً</p>
+                    <h1 class="font-bold text-lg leading-tight">رفقتي</h1>
+                    <p class="text-xs text-purple-200">معاً.. نصنع أجمل الأوقات ونتجاوز التحديات</p>
                 </div>
             </div>
             <div class="flex items-center space-x-2 space-x-reverse">
@@ -127,165 +127,144 @@
         <!-- المحتوى المتغير للواجهات -->
         <main class="flex-1 p-4 overflow-y-auto hide-scrollbar">
 
-            <!-- صندوق التعزيزات الواردة (يظهر للطالبة) -->
+            <!-- صندوق التعزيزات الواردة -->
             <div id="student-rewards-banner" class="mb-4 bg-gradient-to-r from-amber-100 to-yellow-100 p-3.5 rounded-2xl border border-amber-300 shadow-sm flex items-center justify-between">
                 <div class="flex items-center space-x-2 space-x-reverse">
                     <span class="text-2xl">🌟</span>
                     <div>
-                        <span class="text-xs font-bold text-amber-900 block">آخر تعزيز من المعلمة / ولي الأمر:</span>
-                        <p id="latest-reward-text" class="text-xs text-amber-800 font-semibold mt-0.5">أنتِ متميزة، واصلي تألقكِ! ✨</p>
+                        <span class="text-xs font-bold text-amber-900 block">آخر تعزيز من المعلم/ولي الأمر:</span>
+                        <p id="latest-reward-text" class="text-xs text-amber-800 font-semibold mt-0.5">أنت رائع ومميز، استمر في التألق! ✨</p>
                     </div>
                 </div>
                 <span class="text-[10px] bg-amber-500 text-white px-2 py-1 rounded-full font-bold">رائع جداً</span>
             </div>
 
-            <!-- 1️⃣ نافذة مساعد الدراسة -->
-            <section id="sec-study" class="space-y-4">
+            <!-- 1️⃣ التبويب الجديد: الأنشطة التشجيعية والترفيهية (مخصص لذوي الاحتياجات الخاصة) -->
+            <section id="sec-activities" class="space-y-4">
                 <div class="bg-gradient-to-r from-app-purple to-indigo-500 text-white p-4 rounded-2xl shadow-sm">
-                    <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-book-open ml-2"></i>مساعد الدراسة</h2>
-                    <p class="text-xs text-purple-100">شرح مباشر، ملخصات، وأسئلة تدريبية عبر الذكاء الاصطناعي</p>
+                    <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-star ml-2"></i>الأنشطة التشجيعية</h2>
+                    <p class="text-xs text-purple-100">أنشطة تفاعلية ممتعة ومصممة لدعمك وإدخال البهجة لقلبك</p>
                 </div>
 
-                <div class="bg-purple-50 p-3 rounded-xl border border-purple-100 space-y-3">
-                    <label class="block text-sm font-semibold text-purple-900">أدخلي عنوان الدرس:</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="study-query" placeholder="مثال: العناصر، الكسور العشرية..." class="w-full p-2.5 text-sm rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-app-purple">
+                <!-- شبكة ألعاب وأنشطة تحفيزية -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div onclick="triggerActivityGame('stars')" class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-center cursor-pointer hover:bg-purple-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">⭐</span>
+                        <h3 class="text-xs font-bold text-purple-900">جمع النجوم</h3>
+                        <p class="text-[10px] text-purple-600 mt-0.5">اجمع النجوم واكسب مكافأة</p>
                     </div>
-                    <div class="grid grid-cols-3 gap-2 pt-1">
-                        <button onclick="fetchStudyContent('explain')" class="bg-app-purple text-white py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90"><i class="fa-solid fa-chalkboard-user block text-sm mb-1"></i>شرح الدرس</button>
-                        <button onclick="fetchStudyContent('quiz')" class="bg-purple-600 text-white py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90"><i class="fa-solid fa-pen-ruler block text-sm mb-1"></i>أسئلة تدريب</button>
-                        <button onclick="fetchStudyContent('summary')" class="bg-indigo-600 text-white py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90"><i class="fa-solid fa-list-check block text-sm mb-1"></i>تلخيص الدرس</button>
+                    <div onclick="triggerActivityGame('breathe')" class="bg-sky-50 p-3 rounded-xl border border-sky-200 text-center cursor-pointer hover:bg-sky-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">🍃</span>
+                        <h3 class="text-xs font-bold text-sky-900">تمرين الاسترخاء</h3>
+                        <p class="text-[10px] text-sky-600 mt-0.5">تنفس بعمق واشعر بالراحة</p>
+                    </div>
+                    <div onclick="triggerActivityGame('cheer')" class="bg-pink-50 p-3 rounded-xl border border-pink-200 text-center cursor-pointer hover:bg-pink-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">🎉</span>
+                        <h3 class="text-xs font-bold text-pink-900">تصفيق وتشجيع</h3>
+                        <p class="text-[10px] text-pink-600 mt-0.5">احتفال فوري بإنجازك</p>
+                    </div>
+                    <div onclick="triggerActivityGame('colors')" class="bg-green-50 p-3 rounded-xl border border-green-200 text-center cursor-pointer hover:bg-green-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">🎨</span>
+                        <h3 class="text-xs font-bold text-green-900">عالم الألوان</h3>
+                        <p class="text-[10px] text-green-600 mt-0.5">تعرف على الألوان المبهجة</p>
+                    </div>
+                </div>
+
+                <!-- مساحة عرض تفاعل النشاط -->
+                <div id="activity-box" class="bg-white p-4 rounded-2xl border border-purple-100 shadow-sm text-center space-y-2">
+                    <span class="text-xs font-bold text-purple-600 block">اختر نشاطاً من الأعلى للبدء والتفاعل!</span>
+                    <p id="activity-msg" class="text-sm text-gray-700">أنت شخص مميز وقادر على إنجاز أروع الأمور اليوم.</p>
+                </div>
+            </section>
+
+            <!-- 2️⃣ نافذة رفيق التعلم والدعم (مُعدلة لتناسب القدرات الخاصة) -->
+            <section id="sec-study" class="space-y-4 hidden">
+                <div class="bg-gradient-to-r from-app-pink to-rose-400 text-white p-4 rounded-2xl shadow-sm">
+                    <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-book-open ml-2"></i>رفيق التعلم المبسط</h2>
+                    <p class="text-xs text-rose-100">شرح مبسط، قصص هادفة، وأسئلة سهلة عبر الذكاء الاصطناعي</p>
+                </div>
+
+                <div class="bg-rose-50 p-3 rounded-xl border border-rose-100 space-y-3">
+                    <label class="block text-sm font-semibold text-rose-900">ما الذي تحب أن نتعلمه أو نتحدث عنه اليوم؟</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="study-query" placeholder="مثال: الحيوانات، الأرقام، الفواكه..." class="w-full p-2.5 text-sm rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-app-pink">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <button onclick="fetchStudyContent('explain')" class="bg-app-pink text-white py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90"><i class="fa-solid fa-lightbulb block text-sm mb-1"></i>شرح مبسط</button>
+                        <button onclick="fetchStudyContent('quiz')" class="bg-rose-600 text-white py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90"><i class="fa-solid fa-puzzle-piece block text-sm mb-1"></i>أسئلة ممتعة</button>
                     </div>
                 </div>
 
                 <div id="study-result" class="hidden bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-3">
                     <div class="flex items-center justify-between border-b pb-2">
-                        <span class="text-xs font-bold text-purple-600 uppercase tracking-wider" id="study-result-type">النتيجة</span>
+                        <span class="text-xs font-bold text-rose-600 uppercase tracking-wider" id="study-result-type">النتيجة</span>
                         <i class="fa-solid fa-sparkles text-yellow-500"></i>
                     </div>
                     <div id="study-result-body" class="text-sm leading-relaxed text-gray-700 whitespace-pre-line"></div>
                 </div>
             </section>
 
-            <!-- 2️⃣ نافذة حل الواجب -->
-            <section id="sec-homework" class="space-y-4 hidden">
-                <div class="bg-gradient-to-r from-app-pink to-rose-400 text-white p-4 rounded-2xl shadow-sm">
-                    <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-pen-to-square ml-2"></i>حل الواجب</h2>
-                    <p class="text-xs text-rose-100">تحليل الذكاء الاصطناعي خطوة بخطوة للوصول للحل الصحيح</p>
-                </div>
-
-                <div class="bg-rose-50 p-3 rounded-xl border border-rose-100 space-y-3">
-                    <textarea id="hw-query" rows="3" placeholder="اكتبي سؤال الواجب هنا..." class="w-full p-2.5 text-sm rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-app-pink"></textarea>
-                    <div class="flex justify-end">
-                        <button onclick="solveHomework()" class="bg-app-pink text-white px-5 py-2 rounded-xl text-xs font-bold shadow-sm hover:opacity-90">إرسال وحل السؤال</button>
-                    </div>
-                </div>
-
-                <div id="hw-loading" class="hidden text-center py-4 text-xs text-rose-500 font-bold">
-                    <i class="fa-solid fa-spinner animate-spin text-lg block mb-1"></i>
-                    جاري التفكير وحل الواجب عبر الذكاء الاصطناعي...
-                </div>
-
-                <div id="hw-result" class="hidden space-y-3">
-                    <h3 class="text-sm font-bold text-gray-700">خطة الحل خطوة بخطوة:</h3>
-                    <div class="space-y-2">
-                        <div class="p-3 bg-purple-50 rounded-xl border-r-4 border-app-purple">
-                            <span class="text-xs font-bold text-app-purple">1. فهم السؤال:</span>
-                            <p class="text-xs text-gray-700 mt-1 whitespace-pre-line" id="hw-step-1"></p>
-                        </div>
-                        <div class="p-3 bg-pink-50 rounded-xl border-r-4 border-app-pink">
-                            <span class="text-xs font-bold text-app-pink">2. المعطيات:</span>
-                            <p class="text-xs text-gray-700 mt-1 whitespace-pre-line" id="hw-step-2"></p>
-                        </div>
-                        <div class="p-3 bg-blue-50 rounded-xl border-r-4 border-app-blue">
-                            <span class="text-xs font-bold text-blue-600">3. طريقة الحل:</span>
-                            <p class="text-xs text-gray-700 mt-1 whitespace-pre-line" id="hw-step-3"></p>
-                        </div>
-                        <div class="p-3 bg-green-50 rounded-xl border-r-4 border-emerald-500">
-                            <span class="text-xs font-bold text-emerald-600">4. الإجابة النهائية:</span>
-                            <p class="text-xs text-gray-800 font-bold mt-1 whitespace-pre-line" id="hw-step-4"></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3️⃣ نافذة منظم الطالبات -->
+            <!-- 3️⃣ نافذة منظم المهام اليومية -->
             <section id="sec-organizer" class="space-y-4 hidden">
                 <div class="bg-gradient-to-r from-app-blue to-blue-500 text-white p-4 rounded-2xl shadow-sm flex items-center justify-between">
                     <div>
-                        <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-calendar-check ml-2"></i>جدولي المنظم</h2>
-                        <p class="text-xs text-blue-100">تنظيم الواجبات والاختبارات مع إشعارات صوتية</p>
+                        <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-calendar-check ml-2"></i>جدولي اليومي</h2>
+                        <p class="text-xs text-blue-100">تنظيم أنشطتك ومهامك اليومية مع إشعارات صوتية مبهجة</p>
                     </div>
                     <button onclick="openAddTaskModal()" class="bg-white text-blue-600 w-10 h-10 rounded-full font-bold text-xl shadow hover:bg-blue-50 flex items-center justify-center">+</button>
                 </div>
 
-                <div class="flex border-b border-gray-200">
-                    <button onclick="filterTasks('all')" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-app-blue text-blue-600 task-tab" id="tab-all">الكل</button>
-                    <button onclick="filterTasks('واجبات')" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-transparent text-gray-400 task-tab" id="tab-hw">الواجبات</button>
-                    <button onclick="filterTasks('اختبارات')" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-transparent text-gray-400 task-tab" id="tab-exam">الاختبارات</button>
-                    <button onclick="filterTasks('مهام')" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-transparent text-gray-400 task-tab" id="tab-task">المهام</button>
-                </div>
-
                 <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 flex items-center justify-between">
-                    <span class="text-xs font-semibold text-blue-900"><i class="fa-solid fa-volume-high text-blue-600 ml-1"></i>تجربة التنبيه الصوتي والاهتزاز:</span>
-                    <button onclick="triggerSoundAndVibration('اختبار تجريبي', 'هذا تنبيه تجريبي لتأكيد عمل الصوت والاهتزاز!')" class="bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:bg-blue-700">تجربة الآن 🔔</button>
+                    <span class="text-xs font-semibold text-blue-900"><i class="fa-solid fa-volume-high text-blue-600 ml-1"></i>تجربة التنبيه الصوتي:</span>
+                    <button onclick="triggerSoundAndVibration('تنبيه رفيقك', 'حان وقت نشاطك القادم، أنت بطل رائع!')" class="bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:bg-blue-700">جرب الآن 🔔</button>
                 </div>
 
                 <div id="tasks-container" class="space-y-2"></div>
             </section>
 
-            <!-- 4️⃣ نافذة مساعدتي النفسية -->
+            <!-- 4️⃣ نافذة مساعدتي النفسية والمشاعر -->
             <section id="sec-psycho" class="space-y-4 hidden">
                 <div class="bg-gradient-to-r from-emerald-400 to-app-green text-gray-800 p-4 rounded-2xl shadow-sm">
-                    <h2 class="text-xl font-bold mb-1 text-emerald-950"><i class="fa-solid fa-heart-pulse ml-2"></i>مساعدتي النفسية</h2>
-                    <p class="text-xs text-emerald-900">أنتِ قوية وقادرة على تحقيق أحلامكِ ✨</p>
+                    <h2 class="text-xl font-bold mb-1 text-emerald-950"><i class="fa-solid fa-heart-pulse ml-2"></i>مساحة المشاعر والراحة</h2>
+                    <p class="text-xs text-emerald-900">أنت قوي، محبوب وقادر على تحقيق أحلامك ✨</p>
                 </div>
 
                 <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 space-y-2">
                     <div class="flex justify-between items-center text-amber-800">
-                        <span class="text-xs font-bold"><i class="fa-solid fa-star ml-1"></i>عبارات تشجيعية</span>
+                        <span class="text-xs font-bold"><i class="fa-solid fa-star ml-1"></i>رسائل تشجيعية لك</span>
                         <button onclick="refreshQuote()" class="text-amber-700 hover:rotate-180 transition-transform duration-300"><i class="fa-solid fa-rotate-right"></i></button>
                     </div>
-                    <p id="quote-text" class="text-sm font-semibold text-amber-900 leading-relaxed">"النجاح ليس عدم الفشل، بل هو القدرة على الاستمرار بدون فقدان الشغف."</p>
-                </div>
-
-                <div class="bg-sky-50 p-4 rounded-2xl border border-sky-200 space-y-2">
-                    <div class="flex justify-between items-center text-sky-800">
-                        <span class="text-xs font-bold"><i class="fa-solid fa-wind ml-1"></i>نصائح للتعامل مع التوتر</span>
-                        <button onclick="refreshTip()" class="text-sky-700 hover:rotate-180 transition-transform duration-300"><i class="fa-solid fa-rotate-right"></i></button>
-                    </div>
-                    <p id="tip-text" class="text-sm font-medium text-sky-900 leading-relaxed">خدّي نفساً عميقاً: شهيق لمدة 4 ثوانٍ، كتم النفس لـ 4 ثوانٍ، ثم زفير بطيء لـ 6 ثوانٍ.</p>
+                    <p id="quote-text" class="text-sm font-semibold text-amber-900 leading-relaxed">"ابتسامتك تضيء العالم من حولك، أنت رائع كما أنت!"</p>
                 </div>
 
                 <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200 space-y-3">
-                    <h3 class="text-xs font-bold text-purple-900"><i class="fa-solid fa-journal-whills ml-1"></i>مساحة مشاعر (مذكراتكِ الخاصة)</h3>
-                    <textarea id="diary-input" rows="3" placeholder="كيف تشعرين اليوم؟ فرّغي مشاعركِ هنا بأمان تام..." class="w-full p-2 text-xs rounded-xl border border-purple-200 focus:outline-none focus:ring-1 focus:ring-app-purple"></textarea>
-                    <button onclick="saveDiary()" class="w-full bg-purple-600 text-white py-2 rounded-xl text-xs font-bold shadow-sm">حفظ في يومياتي المحمية</button>
+                    <h3 class="text-xs font-bold text-purple-900"><i class="fa-solid fa-feather ml-1"></i>يومياتي السعيدة</h3>
+                    <textarea id="diary-input" rows="3" placeholder="كيف تشعر اليوم؟ عبر عما تحب هنا بأمان تام..." class="w-full p-2 text-xs rounded-xl border border-purple-200 focus:outline-none focus:ring-1 focus:ring-app-purple"></textarea>
+                    <button onclick="saveDiary()" class="w-full bg-purple-600 text-white py-2 rounded-xl text-xs font-bold shadow-sm">حفظ في يومياتي</button>
                     <div id="diary-history" class="space-y-2 pt-2 max-h-40 overflow-y-auto"></div>
                 </div>
             </section>
 
-            <!-- 5️⃣ التبويب الجديد: متابعة وإشراف (للمعلمة أو ولي الأمر) -->
+            <!-- 5️⃣ التبويب: متابعة وإشراف (للمعلم أو ولي الأمر) -->
             <section id="sec-supervision" class="space-y-4 hidden">
                 <div class="bg-gradient-to-r from-indigo-700 to-purple-800 text-white p-4 rounded-2xl shadow-sm">
                     <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-eye ml-2"></i>لوحة المتابعة والإشراف</h2>
-                    <p class="text-xs text-indigo-200">اطمئني على إنجازات الطالبة وأرسلي لها التعزيز والرموز التشجيعية</p>
+                    <p class="text-xs text-indigo-200">اطمئن على إنجازات صديقنا وأرسل له التعزيز والمكافآت الفورية</p>
                 </div>
 
-                <!-- اختيار دور المشرف (معلمة أو ولي أمر) -->
+                <!-- اختيار دور المشرف -->
                 <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 flex items-center justify-between">
-                    <span class="text-xs font-bold text-purple-900">أنتِ تتابعينة بصفتك:</span>
+                    <span class="text-xs font-bold text-purple-900">أنت تتابع بصفتك:</span>
                     <div class="flex gap-1.5">
-                        <button onclick="setSupervisionRole('teacher')" id="btn-role-teacher" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-app-purple text-white shadow">معلمة 👩‍🏫</button>
+                        <button onclick="setSupervisionRole('teacher')" id="btn-role-teacher" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-app-purple text-white shadow">معلم / مشرف 👨‍🏫</button>
                         <button onclick="setSupervisionRole('parent')" id="btn-role-parent" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-purple-800 border border-purple-300">ولي أمر 👨‍👩‍‍👧</button>
                     </div>
                 </div>
 
-                <!-- إرسال تعزيز ورموز للطالبة -->
+                <!-- إرسال تعزيز ورموز -->
                 <div class="bg-white p-4 rounded-2xl border border-purple-100 shadow-sm space-y-3">
-                    <h3 class="text-xs font-bold text-purple-900"><i class="fa-solid fa-gift ml-1 text-app-pink"></i>إرسال تعزيز للطالبة (رموز ونصوص)</h3>
+                    <h3 class="text-xs font-bold text-purple-900"><i class="fa-solid fa-gift ml-1 text-app-pink"></i>إرسال تعزيز ومكافأة</h3>
                     
-                    <!-- أزرار رموز سريعة -->
                     <div class="flex gap-2 justify-center py-1">
                         <button onclick="selectEmoji('🌟')" class="text-xl p-2 bg-yellow-50 rounded-xl hover:bg-yellow-100">🌟</button>
                         <button onclick="selectEmoji('🏆')" class="text-xl p-2 bg-yellow-50 rounded-xl hover:bg-yellow-100">🏆</button>
@@ -295,23 +274,23 @@
                         <button onclick="selectEmoji('🎯')" class="text-xl p-2 bg-green-50 rounded-xl hover:bg-green-100">🎯</button>
                     </div>
 
-                    <textarea id="supervision-reward-input" rows="2" placeholder="اكتبي رسالة تشجيعية أو ملاحظة إيجابية..." class="w-full p-2.5 text-xs rounded-xl border border-purple-200 focus:outline-none focus:ring-1 focus:ring-app-purple"></textarea>
+                    <textarea id="supervision-reward-input" rows="2" placeholder="اكتب رسالة تشجيعية أو ملاحظة إيجابية..." class="w-full p-2.5 text-xs rounded-xl border border-purple-200 focus:outline-none focus:ring-1 focus:ring-app-purple"></textarea>
                     
-                    <button onclick="sendRewardToStudent()" class="w-full bg-app-purple text-white py-2 rounded-xl text-xs font-bold shadow hover:bg-purple-700">إرسال التعزيز الفوري للطالبة ✨</button>
+                    <button onclick="sendRewardToStudent()" class="w-full bg-app-purple text-white py-2 rounded-xl text-xs font-bold shadow hover:bg-purple-700">إرسال التعزيز الفوري ✨</button>
                 </div>
 
-                <!-- قسم الاطلاع على أداء ومشاعر الطالبة -->
+                <!-- قسم الاطلاع على الأداء -->
                 <div class="bg-white p-4 rounded-2xl border border-purple-100 shadow-sm space-y-3">
-                    <h3 class="text-xs font-bold text-purple-900"><i class="fa-solid fa-chart-line ml-1 text-app-blue"></i>سجل الأداء والمشاعر المسجلة</h3>
+                    <h3 class="text-xs font-bold text-purple-900"><i class="fa-solid fa-chart-line ml-1 text-app-blue"></i>سجل الأداء والمشاعر</h3>
                     
                     <div class="bg-purple-50 p-3 rounded-xl space-y-2">
-                        <span class="text-[11px] font-bold text-purple-900 block">📊 ملخص المهام والواجبات:</span>
+                        <span class="text-[11px] font-bold text-purple-900 block">📊 ملخص المهام:</span>
                         <div id="supervision-tasks-summary" class="text-xs text-gray-700">جاري تحميل المهام...</div>
                     </div>
 
                     <div class="bg-pink-50 p-3 rounded-xl space-y-2">
-                        <span class="text-[11px] font-bold text-pink-900 block">💬 آخر مذكرات ومشاعر مسجلة:</span>
-                        <div id="supervision-diary-summary" class="text-xs text-gray-700">لا توجد مذكرات جديدة.</div>
+                        <span class="text-[11px] font-bold text-pink-900 block">💬 آخر اليوميات المسجلة:</span>
+                        <div id="supervision-diary-summary" class="text-xs text-gray-700">لا توجد يوميات جديدة.</div>
                     </div>
                 </div>
             </section>
@@ -321,21 +300,20 @@
         <!-- نافذة إضافة مهمة -->
         <div id="add-task-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white w-full max-w-sm rounded-3xl p-5 space-y-4 shadow-xl">
-                <h3 class="font-bold text-base text-gray-800">إضافة مهمة جديدة</h3>
+                <h3 class="font-bold text-base text-gray-800">إضافة مهمة أو نشاط جديد</h3>
                 <div>
-                    <label class="text-xs font-semibold text-gray-600">عنوان المهمة / الواجب / الاختبار</label>
-                    <input type="text" id="new-task-title" placeholder="مثال: اختبار رياضيات..." class="w-full mt-1 p-2.5 border rounded-xl text-xs focus:ring-2 focus:ring-app-blue">
+                    <label class="text-xs font-semibold text-gray-600">عنوان المهمة / النشاط</label>
+                    <input type="text" id="new-task-title" placeholder="مثال: جلسة علاج طبيعي، تمرين رياضي..." class="w-full mt-1 p-2.5 border rounded-xl text-xs focus:ring-2 focus:ring-app-blue">
                 </div>
                 <div>
                     <label class="text-xs font-semibold text-gray-600">نوع المهمة</label>
                     <select id="new-task-type" class="w-full mt-1 p-2.5 border rounded-xl text-xs bg-white">
-                        <option value="واجبات">واجب مدرسي</option>
-                        <option value="اختبارات">اختبار</option>
-                        <option value="مهام">مهمة دراسية أخرى</option>
+                        <option value="أنشطة">نشاط يومي</option>
+                        <option value="مهام">مهمة خاصة</option>
                     </select>
                 </div>
                 <div>
-                    <label class="text-xs font-semibold text-gray-600">تاريخ التسليم / الموعد</label>
+                    <label class="text-xs font-semibold text-gray-600">الموعد / التاريخ</label>
                     <input type="date" id="new-task-date" class="w-full mt-1 p-2.5 border rounded-xl text-xs">
                 </div>
                 <div class="flex gap-2 pt-2">
@@ -354,8 +332,8 @@
                             <i class="fa-solid fa-robot"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-sm">مساعدتي الذكي (Gemini AI)</h3>
-                            <span class="text-[10px] text-green-500 font-semibold"><i class="fa-solid fa-circle text-[8px] ml-1"></i>متصل بالذكاء الاصطناعي الفعلي</span>
+                            <h3 class="font-bold text-sm">رفيقك الذكي (Gemini AI)</h3>
+                            <span class="text-[10px] text-green-500 font-semibold"><i class="fa-solid fa-circle text-[8px] ml-1"></i>متصل للرد والمساعدة</span>
                         </div>
                     </div>
                     <button onclick="toggleAiModal()" class="text-gray-400 hover:text-gray-600 text-lg p-2"><i class="fa-solid fa-xmark"></i></button>
@@ -363,30 +341,30 @@
 
                 <div id="ai-messages" class="flex-1 overflow-y-auto my-3 space-y-3 p-2 text-xs">
                     <div class="bg-purple-50 text-purple-900 p-3 rounded-2xl rounded-tr-none max-w-[85%] leading-relaxed">
-                        مرحباً بكِ عزيزتي الطالبة! أنا مساعدكِ الذكي. اسأليني عن أي شرح دراسي، حل مسألة، أو نصيحة! 🌸
+                        مرحباً بك يا صديقي! أنا هنا لأساعدك، أجبني، اسألني عن أي قصة، معلومة ممتعة، أو نصيحة! 🌸
                     </div>
                 </div>
 
                 <div class="pt-2 border-t flex gap-2">
-                    <input type="text" id="ai-input" placeholder="اكتبي سؤالكِ للذكاء الاصطناعي..." class="flex-1 p-3 border rounded-xl text-xs focus:ring-2 focus:ring-app-purple" onkeypress="if(event.key==='Enter') sendAiMessage()">
+                    <input type="text" id="ai-input" placeholder="اكتب سؤالك أو ما تحب أن نتحدث فيه..." class="flex-1 p-3 border rounded-xl text-xs focus:ring-2 focus:ring-app-purple" onkeypress="if(event.key==='Enter') sendAiMessage()">
                     <button onclick="sendAiMessage()" id="ai-send-btn" class="bg-app-purple text-white px-4 rounded-xl text-xs font-bold hover:bg-purple-700">إرسال</button>
                 </div>
             </div>
         </div>
 
-        <!-- الشريط السفلي للتنقل (5 تبويبات أساسية متضمنة متابعة وإشراف) -->
+        <!-- الشريط السفلي للتنقل (5 تبويبات أساسية متضمنة تبويب الأنشطة التشجيعية والمتابعة) -->
         <nav class="fixed bottom-0 max-w-md w-full bg-white border-t border-gray-100 flex justify-around py-2 z-40 shadow-lg">
-            <button onclick="switchTab('study')" id="nav-study" class="flex flex-col items-center text-app-purple">
-                <i class="fa-solid fa-book-open text-lg"></i>
-                <span class="text-[10px] mt-1 font-bold">الدراسة</span>
-            </button>
-            <button onclick="switchTab('homework')" id="nav-homework" class="flex flex-col items-center text-gray-400">
-                <i class="fa-solid fa-pen-to-square text-lg"></i>
-                <span class="text-[10px] mt-1 font-bold">الواجب</span>
+            <button onclick="switchTab('activities')" id="nav-activities" class="flex flex-col items-center text-app-purple">
+                <i class="fa-solid fa-star text-lg"></i>
+                <span class="text-[10px] mt-1 font-bold">الأنشطة</span>
             </button>
             <button onclick="switchTab('organizer')" id="nav-organizer" class="flex flex-col items-center text-gray-400">
                 <i class="fa-solid fa-calendar-check text-lg"></i>
-                <span class="text-[10px] mt-1 font-bold">المنظم</span>
+                <span class="text-[10px] mt-1 font-bold">جدولي</span>
+            </button>
+            <button onclick="switchTab('study')" id="nav-study" class="flex flex-col items-center text-gray-400">
+                <i class="fa-solid fa-book-open text-lg"></i>
+                <span class="text-[10px] mt-1 font-bold">الدعم</span>
             </button>
             <button onclick="switchTab('psycho')" id="nav-psycho" class="flex flex-col items-center text-gray-400">
                 <i class="fa-solid fa-heart text-lg"></i>
@@ -394,13 +372,13 @@
             </button>
             <button onclick="switchTab('supervision')" id="nav-supervision" class="flex flex-col items-center text-gray-400">
                 <i class="fa-solid fa-eye text-lg"></i>
-                <span class="text-[10px] mt-1 font-bold">متابعة وإشراف</span>
+                <span class="text-[10px] mt-1 font-bold">المتابعة</span>
             </button>
         </nav>
 
     </div>
 
-    <!-- JavaScript الأساسية للمحرك والصوت والاهتزاز والمتابعة -->
+    <!-- JavaScript الأساسية للمحرك والصوت والاهتزاز والأنشطة والمتابعة -->
     <script>
         function playNotificationSound() {
             try {
@@ -438,29 +416,47 @@
             }
         }
 
+        function triggerActivityGame(type) {
+            const msg = document.getElementById('activity-msg');
+            playNotificationSound();
+            triggerVibration();
+            if(type === 'stars') {
+                msg.innerHTML = "🌟 ممتاز! لقد جمعت 5 نجوم جديدة في رصيدك! أنت بطل متميز.";
+                showAppNotification("🌟 مكافأة نجوم جديدة أضيفت لرصيدك!");
+            } else if(type === 'breathe') {
+                msg.innerHTML = "🍃 خذ نفساً عميقاً... شهيق ببطء... ثم زفير هادئ. أنت تشعر بالهدوء والراحة الآن.";
+            } else if(type === 'cheer') {
+                msg.innerHTML = "🎉 هوراي! تصفيق حار لشجاعتك وجهدك الرائع اليوم!";
+                if ("vibrate" in navigator) navigator.vibrate([100, 100, 100, 100, 200]);
+            } else if(type === 'colors') {
+                const colorsList = ["أحمر دافئ مثل التفاح 🍎", "أزرق صافي مثل السماء ☁️", "أصفر مشرق مثل الشمس ☀️", "أخضر طبيعي مثل الأشجار 🌳"];
+                msg.innerHTML = `🎨 لون اليوم المفضل: ${colorsList[Math.floor(Math.random() * colorsList.length)]}`;
+            }
+        }
+
         function checkTaskDeadlines() {
             const todayStr = new Date().toISOString().split('T')[0];
-            let tasksList = JSON.parse(localStorage.getItem('musaidati_tasks') || '[]');
-            let notifiedTasks = JSON.parse(localStorage.getItem('musaidati_notified_tasks') || '{}');
+            let tasksList = JSON.parse(localStorage.getItem('rifqati_tasks') || '[]');
+            let notifiedTasks = JSON.parse(localStorage.getItem('rifqati_notified_tasks') || '{}');
 
             tasksList.forEach(t => {
                 if (t.date === todayStr && !t.done && !notifiedTasks[t.title + t.date]) {
-                    triggerSoundAndVibration(`تذكير بـ (${t.type}): ${t.title}`, `عزيزتي الطالبة، اليوم هو موعد تسليم المهمة. بالتوفيق! ✨`);
+                    triggerSoundAndVibration(`تذكير بـ (${t.type}): ${t.title}`, `يا صديقي، اليوم موعد هذه المهمة. بالتوفيق دائماً! ✨`);
                     notifiedTasks[t.title + t.date] = true;
                 }
             });
-            localStorage.setItem('musaidati_notified_tasks', JSON.stringify(notifiedTasks));
+            localStorage.setItem('rifqati_notified_tasks', JSON.stringify(notifiedTasks));
         }
 
         async function queryRealAI(promptText, systemContext = "") {
             try {
-                const fullPrompt = systemContext ? `${systemContext}\n\nطلب الطالبة: ${promptText}` : promptText;
+                const fullPrompt = systemContext ? `${systemContext}\n\nطلب الصديق: ${promptText}` : promptText;
                 const response = await fetch("https://text.pollinations.ai/", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         messages: [
-                            { role: "system", content: "أنت مساعد دراسي وتعليمي موجه للطالبات باللغة العربية. إجاباتك دقيقة، مشجعة ومباشرة." },
+                            { role: "system", content: "أنت مساعد وعي ودعم وتشجيع موجه خصيصاً لذوي الاحتياجات الخاصة باللغة العربية. إجاباتك مشجعة جداً، مبسطة، دافئة وودودة للغاية." },
                             { role: "user", content: fullPrompt }
                         ],
                         model: "openai"
@@ -469,7 +465,7 @@
                 if(!response.ok) throw new Error("خطأ");
                 return await response.text();
             } catch (err) {
-                return "عذراً عزيزتي الطالبة، يرجى المحاولة مرة أخرى لاحقاً.";
+                return "عذراً يا صديقي، يرجى المحاولة مرة أخرى لاحقاً.";
             }
         }
 
@@ -509,7 +505,7 @@
         }
 
         function switchTab(tab) {
-            const sections = ['study', 'homework', 'organizer', 'psycho', 'supervision'];
+            const sections = ['activities', 'organizer', 'study', 'psycho', 'supervision'];
             sections.forEach(s => {
                 const el = document.getElementById(`sec-${s}`);
                 if(el) el.classList.add('hidden');
@@ -528,44 +524,20 @@
 
         async function fetchStudyContent(type) {
             const query = document.getElementById('study-query').value.trim();
-            if(!query) { showAppNotification('الرجاء كتابة عنوان الدرس أولاً'); return; }
+            if(!query) { showAppNotification('الرجاء كتابة الموضوع أولاً'); return; }
             
             const resDiv = document.getElementById('study-result');
-            const resType = document.getElementById('study-result-type');
             const resBody = document.getElementById('study-result-body');
 
             resDiv.classList.remove('hidden');
-            resBody.innerHTML = '<div class="py-4 text-center text-purple-600 font-bold"><i class="fa-solid fa-spinner animate-spin text-xl block mb-2"></i>جاري جلب الشرح...</div>';
+            resBody.innerHTML = '<div class="py-4 text-center text-purple-600 font-bold"><i class="fa-solid fa-spinner animate-spin text-xl block mb-2"></i>جاري جلب المعلومات...</div>';
 
-            let prompt = type === 'explain' ? `اشرحي درس: (${query})` : type === 'quiz' ? `اكتبي 3 أسئلة لدرس: (${query})` : `لخصي درس: (${query})`;
+            let prompt = type === 'explain' ? `اشرح هذا الموضوع بشكل مبسط جداً وداافئ: (${query})` : `اطرح سؤالين سهلين وممتعين حول: (${query})`;
             const aiResult = await queryRealAI(prompt);
             resBody.innerText = aiResult;
         }
 
-        async function solveHomework() {
-            const query = document.getElementById('hw-query').value.trim();
-            if(!query) { showAppNotification('يرجى كتابة السؤال أولاً'); return; }
-
-            document.getElementById('hw-result').classList.add('hidden');
-            document.getElementById('hw-loading').classList.remove('hidden');
-
-            const prompt = `حل هذه المسألة: "${query}". قسّم الإجابة بـ [SPLIT] إلى: 1. فهم السؤال 2. المعطيات 3. طريقة الحل 4. النتيجة النهائية`;
-            const aiResponse = await queryRealAI(query, prompt);
-            document.getElementById('hw-loading').classList.add('hidden');
-            document.getElementById('hw-result').classList.remove('hidden');
-
-            const parts = aiResponse.split('[SPLIT]');
-            if (parts.length >= 4) {
-                document.getElementById('hw-step-1').innerText = parts[0];
-                document.getElementById('hw-step-2').innerText = parts[1];
-                document.getElementById('hw-step-3').innerText = parts[2];
-                document.getElementById('hw-step-4').innerText = parts[3];
-            } else {
-                document.getElementById('hw-step-3').innerText = aiResponse;
-            }
-        }
-
-        let tasks = JSON.parse(localStorage.getItem('musaidati_tasks') || '[]');
+        let tasks = JSON.parse(localStorage.getItem('rifqati_tasks') || '[]');
         function renderTasks(filter = 'all') {
             const container = document.getElementById('tasks-container');
             container.innerHTML = '';
@@ -602,36 +574,33 @@
             const date = document.getElementById('new-task-date').value;
             if(!title || !date) { showAppNotification('أكمل كافة الحقول'); return; }
             tasks.push({ title, type, date, done: false });
-            localStorage.setItem('musaidati_tasks', JSON.stringify(tasks));
+            localStorage.setItem('rifqati_tasks', JSON.stringify(tasks));
             renderTasks();
             closeAddTaskModal();
         }
 
-        function toggleTask(i) { tasks[i].done = !tasks[i].done; localStorage.setItem('musaidati_tasks', JSON.stringify(tasks)); renderTasks(); }
-        function deleteTask(i) { tasks.splice(i, 1); localStorage.setItem('musaidati_tasks', JSON.stringify(tasks)); renderTasks(); }
-        function filterTasks(type) { renderTasks(type); }
+        function toggleTask(i) { tasks[i].done = !tasks[i].done; localStorage.setItem('rifqati_tasks', JSON.stringify(tasks)); renderTasks(); }
+        function deleteTask(i) { tasks.splice(i, 1); localStorage.setItem('rifqati_tasks', JSON.stringify(tasks)); renderTasks(); }
 
-        const quotes = ["أنتِ أقوى مما تظنين!", "لا تقارني نفسكِ بأحد، رحلتكِ فريدة.", "كل صباح هو فرصة جديدة!"];
-        const tips = ["خُذي استراحة لمدة 5 دقائق كل 25 دقيقة.", "تناولي كوباً من الماء واعملي إطالة خفيفة."];
+        const quotes = ["أنت أقوى مما تظنين وتظن!", "كل يوم هو فرصة جديدة للابتسام والنجاح.", "وجودك يضفي جمالاً خاصاً على كل من حولك."];
         function refreshQuote() { document.getElementById('quote-text').innerText = `"${quotes[Math.floor(Math.random() * quotes.length)]}"`; }
-        function refreshTip() { document.getElementById('tip-text').innerText = tips[Math.floor(Math.random() * tips.length)]; }
 
-        let diaries = JSON.parse(localStorage.getItem('musaidati_diaries') || '[]');
+        let diaries = JSON.parse(localStorage.getItem('rifqati_diaries') || '[]');
         function saveDiary() {
             const txt = document.getElementById('diary-input').value.trim();
             if(!txt) return;
             diaries.unshift({ text: txt, date: new Date().toLocaleDateString('ar-EG') });
-            localStorage.setItem('musaidati_diaries', JSON.stringify(diaries));
+            localStorage.setItem('rifqati_diaries', JSON.stringify(diaries));
             document.getElementById('diary-input').value = '';
             renderDiaries();
-            showAppNotification("تم حفظ مذكرتكِ بأمان تام.");
+            showAppNotification("تم حفظ يومياتك بأمان تام.");
         }
         function renderDiaries() {
             const container = document.getElementById('diary-history');
             if(!container) return;
             container.innerHTML = '';
             if(diaries.length === 0) {
-                container.innerHTML = '<span class="text-[10px] text-gray-400">لا توجد مذكرات محفوظة بعد.</span>';
+                container.innerHTML = '<span class="text-[10px] text-gray-400">لا توجد يوميات محفوظة بعد.</span>';
                 return;
             }
             diaries.forEach(d => {
@@ -642,7 +611,7 @@
             });
         }
 
-        // وظائف تبويب متابعة وإشراف وإرسال التعزيزات للطالبة
+        // وظائف تبويب المتابعة وإشراف ولي الأمر/المعلم
         let supervisionRole = 'teacher';
         function setSupervisionRole(role) {
             supervisionRole = role;
@@ -670,17 +639,17 @@
             }
             const rewardObj = {
                 text: text,
-                sender: supervisionRole === 'teacher' ? 'المعلمة' : 'ولي الأمر',
+                sender: supervisionRole === 'teacher' ? 'المعلم / المشرف' : 'ولي الأمر',
                 date: new Date().toLocaleDateString('ar-EG')
             };
-            localStorage.setItem('musaidati_latest_reward', JSON.stringify(rewardObj));
+            localStorage.setItem('rifqati_latest_reward', JSON.stringify(rewardObj));
             document.getElementById('supervision-reward-input').value = '';
             loadLatestReward();
-            triggerSoundAndVibration("هدية وتعزيز جديد!", "تم إرسال التعزيز بنجاح للطالبة وتحديثه في الواجهة.");
+            triggerSoundAndVibration("هدية وتعزيز جديد!", "تم إرسال التعزيز بنجاح وتحديثه في الواجهة.");
         }
 
         function loadLatestReward() {
-            const rewardData = JSON.parse(localStorage.getItem('musaidati_latest_reward') || '{"text": "أنتِ طالبة متميزة، واصلي تألقكِ! ✨", "sender": "المعلمة"}');
+            const rewardData = JSON.parse(localStorage.getItem('rifqati_latest_reward') || '{"text": "أنت بطل رائع، استمر في التألق! ✨", "sender": "المعلم"}');
             const banner = document.getElementById('latest-reward-text');
             if(banner) {
                 banner.innerText = `${rewardData.sender}: ${rewardData.text}`;
@@ -701,7 +670,7 @@
                 if(diaries.length > 0) {
                     diarySum.innerText = `"${diaries[0].text}" (${diaries[0].date})`;
                 } else {
-                    diarySum.innerText = "لم تقم الطالبة بكتابة أي مشاعر جديدة اليوم.";
+                    diarySum.innerText = "لم يتم تسجيل أي يوميات جديدة اليوم.";
                 }
             }
         }
