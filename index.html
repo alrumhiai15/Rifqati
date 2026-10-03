@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>تطبيق رفقتي - Rifqati</title>
+    
+    <!-- إعدادات التثبيت كملء شاشة (PWA Standalone) -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="رفقتي">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+    
+    <!-- ملف تعريف التطبيق (Manifest) مدمج لتفعيل خيار التثبيت -->
+    <link rel="manifest" href='data:application/manifest+json,{
+        "name": "تطبيق رفقتي الداعم",
+        "short_name": "رفقتي",
+        "start_url": "./",
+        "display": "standalone",
+        "background_color": "#F9F8FF",
+        "theme_color": "#8A70D6",
+        "icons": [
+            {
+                "src": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+                "sizes": "512x512",
+                "type": "image/png"
+            }
+        ]
+    }'>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons CDN -->
@@ -139,45 +164,62 @@
                 <span class="text-[10px] bg-amber-500 text-white px-2 py-1 rounded-full font-bold">رائع جداً</span>
             </div>
 
-            <!-- 1️⃣ التبويب الجديد: الأنشطة التشجيعية والترفيهية (مخصص لذوي الاحتياجات الخاصة) -->
+            <!-- 1️⃣ التبويب المحدث: الأنشطة والأنظمة اليومية بالذكاء الاصطناعي -->
             <section id="sec-activities" class="space-y-4">
                 <div class="bg-gradient-to-r from-app-purple to-indigo-500 text-white p-4 rounded-2xl shadow-sm">
-                    <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-star ml-2"></i>الأنشطة التشجيعية</h2>
-                    <p class="text-xs text-purple-100">أنشطة تفاعلية ممتعة ومصممة لدعمك وإدخال البهجة لقلبك</p>
+                    <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-star ml-2"></i>أنشطة ومحطات اليوم</h2>
+                    <p class="text-xs text-purple-100">اختر تصنيفاً أو محطة لتوليد لعبة فريدة ومبتكرة بالذكاء الاصطناعي مع خطواتها بالكامل!</p>
                 </div>
 
-                <!-- شبكة ألعاب وأنشطة تحفيزية -->
+                <!-- مسار المحطات اليومية -->
+                <div class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-center space-y-2">
+                    <span class="text-[11px] font-bold text-purple-900 block"><i class="fa-solid fa-route ml-1"></i>نظام المحطات اليومية المقترح:</span>
+                    <p class="text-[10px] text-purple-700 font-medium">نشاط حركي ➔ نشاط فني ➔ استراحة ➔ نشاط ذهني ➔ نشاط اجتماعي ➔ نشاط حياتي</p>
+                    <button onclick="generateDailyRoutineAI()" class="w-full bg-app-purple text-white py-2 rounded-xl text-xs font-bold shadow hover:bg-purple-700 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles ml-1"></i>توليد جدول محطات اليوم بالكامل ذكياً ✨
+                    </button>
+                </div>
+
+                <!-- شبكة التصنيفات 5+1 -->
                 <div class="grid grid-cols-2 gap-3">
-                    <div onclick="triggerActivityGame('stars')" class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-center cursor-pointer hover:bg-purple-100 transition shadow-sm">
-                        <span class="text-3xl block mb-1">⭐</span>
-                        <h3 class="text-xs font-bold text-purple-900">جمع النجوم</h3>
-                        <p class="text-[10px] text-purple-600 mt-0.5">اجمع النجوم واكسب مكافأة</p>
-                    </div>
-                    <div onclick="triggerActivityGame('breathe')" class="bg-sky-50 p-3 rounded-xl border border-sky-200 text-center cursor-pointer hover:bg-sky-100 transition shadow-sm">
-                        <span class="text-3xl block mb-1">🍃</span>
-                        <h3 class="text-xs font-bold text-sky-900">تمرين الاسترخاء</h3>
-                        <p class="text-[10px] text-sky-600 mt-0.5">تنفس بعمق واشعر بالراحة</p>
-                    </div>
-                    <div onclick="triggerActivityGame('cheer')" class="bg-pink-50 p-3 rounded-xl border border-pink-200 text-center cursor-pointer hover:bg-pink-100 transition shadow-sm">
-                        <span class="text-3xl block mb-1">🎉</span>
-                        <h3 class="text-xs font-bold text-pink-900">تصفيق وتشجيع</h3>
-                        <p class="text-[10px] text-pink-600 mt-0.5">احتفال فوري بإنجازك</p>
-                    </div>
-                    <div onclick="triggerActivityGame('colors')" class="bg-green-50 p-3 rounded-xl border border-green-200 text-center cursor-pointer hover:bg-green-100 transition shadow-sm">
+                    <div onclick="generateDynamicActivity('أنشطة فنية وإبداعية مثل: الرسم والتلوين بالأصابع، تشكيل الصلصال، صناعة بطاقات، تزيين الأكواب، الرسم بالموسيقى')" class="bg-pink-50 p-3 rounded-xl border border-pink-200 text-center cursor-pointer hover:bg-pink-100 transition shadow-sm">
                         <span class="text-3xl block mb-1">🎨</span>
-                        <h3 class="text-xs font-bold text-green-900">عالم الألوان</h3>
-                        <p class="text-[10px] text-green-600 mt-0.5">تعرف على الألوان المبهجة</p>
+                        <h3 class="text-xs font-bold text-pink-900">فنية وإبداعية</h3>
+                        <p class="text-[10px] text-pink-600 mt-0.5">تلوين، صلصال، أعمال يدوية</p>
+                    </div>
+                    <div onclick="generateDynamicActivity('أنشطة ذهنية وتعليمية مثل: ألعاب المطابقة، تركيب البازل، التعرف على الألوان والأرقام والحروف، لعبة الذاكرة، التصنيف')" class="bg-sky-50 p-3 rounded-xl border border-sky-200 text-center cursor-pointer hover:bg-sky-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">🧩</span>
+                        <h3 class="text-xs font-bold text-sky-900">ذهنية وتعليمية</h3>
+                        <p class="text-[10px] text-sky-600 mt-0.5">بازل، مطابقة، ذاكرة وأرقام</p>
+                    </div>
+                    <div onclick="generateDynamicActivity('أنشطة حركية مثل: رمي الكرة داخل سلة، مسار حركي بسيط، تمرير الكرة، ألعاب التوازن، تمارين تمدد وحركة مع الموسيقى')" class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-center cursor-pointer hover:bg-amber-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">⚽</span>
+                        <h3 class="text-xs font-bold text-amber-900">حركية ونشاط</h3>
+                        <p class="text-[10px] text-amber-600 mt-0.5">كرات، مسارات وتوازن بدني</p>
+                    </div>
+                    <div onclick="generateDynamicActivity('أنشطة ترفيهية واجتماعية مثل: ألعاب جماعية للتعارف والتعاون، تمثيل مواقف وقصص قصيرة ممتعة')" class="bg-purple-50 p-3 rounded-xl border border-purple-200 text-center cursor-pointer hover:bg-purple-100 transition shadow-sm">
+                        <span class="text-3xl block mb-1">🎵</span>
+                        <h3 class="text-xs font-bold text-purple-900">ترفيهية واجتماعية</h3>
+                        <p class="text-[10px] text-purple-600 mt-0.5">تعاون، تمثيل وقصص تفاعلية</p>
                     </div>
                 </div>
 
-                <!-- مساحة عرض تفاعل النشاط -->
-                <div id="activity-box" class="bg-white p-4 rounded-2xl border border-purple-100 shadow-sm text-center space-y-2">
-                    <span class="text-xs font-bold text-purple-600 block">اختر نشاطاً من الأعلى للبدء والتفاعل!</span>
-                    <p id="activity-msg" class="text-sm text-gray-700">أنت شخص مميز وقادر على إنجاز أروع الأمور اليوم.</p>
+                <div onclick="generateDynamicActivity('أنشطة حياتية ومهارية مثل: زراعة النباتات والعناية بها، إعداد وجبة خفيفة بسيطة، ترتيب الأدوات، مهارات التسوق بنقود تعليمية، طي الملابس')" class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-center cursor-pointer hover:bg-emerald-100 transition shadow-sm col-span-2">
+                    <span class="text-2xl inline-block ml-2">🌱</span>
+                    <span class="text-xs font-bold text-emerald-900">أنشطة حياتية ومهارية (زرع، إعداد وجبات، ترتيب ومهارات تسوق)</span>
+                </div>
+
+                <!-- مساحة عرض النشاط المتولد بالذكاء الاصطناعي مع التعليمات -->
+                <div id="activity-box" class="bg-white p-4 rounded-2xl border border-purple-100 shadow-sm space-y-3">
+                    <div class="flex items-center justify-between border-b pb-2">
+                        <span class="text-xs font-bold text-purple-700" id="activity-title-badge">🌟 مساحة الأنشطة الذكية</span>
+                        <i class="fa-solid fa-sparkles text-yellow-500"></i>
+                    </div>
+                    <p id="activity-msg" class="text-xs leading-relaxed text-gray-700 whitespace-pre-line">اختر تصنيفاً من الأعلى لتوليد نشاط فريد وغير متكرر مع تعليمات واضحة تناسب قدرات صديقنا اليوم!</p>
                 </div>
             </section>
 
-            <!-- 2️⃣ نافذة رفيق التعلم والدعم (مُعدلة لتناسب القدرات الخاصة) -->
+            <!-- 2️⃣ نافذة رفيق التعلم والدعم -->
             <section id="sec-study" class="space-y-4 hidden">
                 <div class="bg-gradient-to-r from-app-pink to-rose-400 text-white p-4 rounded-2xl shadow-sm">
                     <h2 class="text-xl font-bold mb-1"><i class="fa-solid fa-book-open ml-2"></i>رفيق التعلم المبسط</h2>
@@ -352,7 +394,7 @@
             </div>
         </div>
 
-        <!-- الشريط السفلي للتنقل (5 تبويبات أساسية متضمنة تبويب الأنشطة التشجيعية والمتابعة) -->
+        <!-- الشريط السفلي للتنقل -->
         <nav class="fixed bottom-0 max-w-md w-full bg-white border-t border-gray-100 flex justify-around py-2 z-40 shadow-lg">
             <button onclick="switchTab('activities')" id="nav-activities" class="flex flex-col items-center text-app-purple">
                 <i class="fa-solid fa-star text-lg"></i>
@@ -378,7 +420,7 @@
 
     </div>
 
-    <!-- JavaScript الأساسية للمحرك والصوت والاهتزاز والأنشطة والمتابعة -->
+    <!-- JavaScript الأساسية -->
     <script>
         function playNotificationSound() {
             try {
@@ -416,22 +458,43 @@
             }
         }
 
-        function triggerActivityGame(type) {
-            const msg = document.getElementById('activity-msg');
+        async function generateDynamicActivity(categoryHint) {
+            const msgBox = document.getElementById('activity-msg');
+            const badge = document.getElementById('activity-title-badge');
+            
             playNotificationSound();
             triggerVibration();
-            if(type === 'stars') {
-                msg.innerHTML = "🌟 ممتاز! لقد جمعت 5 نجوم جديدة في رصيدك! أنت بطل متميز.";
-                showAppNotification("🌟 مكافأة نجوم جديدة أضيفت لرصيدك!");
-            } else if(type === 'breathe') {
-                msg.innerHTML = "🍃 خذ نفساً عميقاً... شهيق ببطء... ثم زفير هادئ. أنت تشعر بالهدوء والراحة الآن.";
-            } else if(type === 'cheer') {
-                msg.innerHTML = "🎉 هوراي! تصفيق حار لشجاعتك وجهدك الرائع اليوم!";
-                if ("vibrate" in navigator) navigator.vibrate([100, 100, 100, 100, 200]);
-            } else if(type === 'colors') {
-                const colorsList = ["أحمر دافئ مثل التفاح 🍎", "أزرق صافي مثل السماء ☁️", "أصفر مشرق مثل الشمس ☀️", "أخضر طبيعي مثل الأشجار 🌳"];
-                msg.innerHTML = `🎨 لون اليوم المفضل: ${colorsList[Math.floor(Math.random() * colorsList.length)]}`;
-            }
+
+            badge.innerText = "✨ جارٍ ابتكار نشاط فريد بالذكاء الاصطناعي...";
+            msgBox.innerHTML = '<div class="py-6 text-center text-purple-600 font-bold"><i class="fa-solid fa-spinner animate-spin text-2xl block mb-2"></i>أرجو الانتظار قليلاً ليقوم الذكاء الاصطناعي بتأليف لعبة جديدة مخصصة ومصممة بالكامل بدون تكرار...</div>';
+
+            const prompt = `ابتكر لعبة أو نشاطاً جديداً كلياً وفريداً غير متكرر ومناسب لذوي الاحتياجات الخاصة، ينتمي إلى هذا المجال: (${categoryHint}). 
+            اجعل الإجابة مقسمة ومنسقة بالشكل التالي باللغة العربية:
+            - **اسم النشاط / اللعبة:** [اسم مبتكر]
+            - **الأدوات المطلوبة:** [أدوات بسيطة ومتاحة]
+            - **الخطوات والتعليمات المفصلة:** [خطوات سهلة وواضحة جداً ومحفزة]
+            - **هدف التشجيع والبهجة:** [رسالة إيجابية مبسطة]`;
+
+            const aiResponse = await queryRealAI(prompt);
+            badge.innerText = "🎯 نشاط مبتكر جديد لك اليوم!";
+            msgBox.innerHTML = aiResponse;
+        }
+
+        async function generateDailyRoutineAI() {
+            const msgBox = document.getElementById('activity-msg');
+            const badge = document.getElementById('activity-title-badge');
+            
+            playNotificationSound();
+            triggerVibration();
+
+            badge.innerText = "✨ جارٍ تصميم جدول المحطات اليومية الذكي...";
+            msgBox.innerHTML = '<div class="py-6 text-center text-purple-600 font-bold"><i class="fa-solid fa-spinner animate-spin text-2xl block mb-2"></i>جارٍ بناء تسلسل محطات اليوم المتكامل...</div>';
+
+            const prompt = `اقترح جدول محطات يومي متكامل ومخصص لذوي الاحتياجات الخاصة بالترتيب التالي: (نشاط حركي ➔ نشاط فني ➔ استراحة ➔ نشاط ذهني ➔ نشاط اجتماعي ➔ نشاط حياتي). اذكر لكل محطة لعبة أو نشاطاً مختصراً ومبتكراً ومبهجاً بأسلوب دافئ.`;
+
+            const aiResponse = await queryRealAI(prompt);
+            badge.innerText = "🌟 محطات اليوم المتكاملة";
+            msgBox.innerHTML = aiResponse;
         }
 
         function checkTaskDeadlines() {
@@ -456,7 +519,7 @@
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         messages: [
-                            { role: "system", content: "أنت مساعد وعي ودعم وتشجيع موجه خصيصاً لذوي الاحتياجات الخاصة باللغة العربية. إجاباتك مشجعة جداً، مبسطة، دافئة وودودة للغاية." },
+                            { role: "system", content: "أنت مساعد تربوي، أخصائي دعم وتشجيع موجه خصيصاً لذوي الاحتياجات الخاصة باللغة العربية. إجاباتك إبداعية، متجددة، مشجعة للغاية، مبسطة، دافئة ومصممة بخطوات واضحة." },
                             { role: "user", content: fullPrompt }
                         ],
                         model: "openai"
@@ -611,7 +674,6 @@
             });
         }
 
-        // وظائف تبويب المتابعة وإشراف ولي الأمر/المعلم
         let supervisionRole = 'teacher';
         function setSupervisionRole(role) {
             supervisionRole = role;
